@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSVダウンロードサンプル</title>
+    <style>
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .container {
+        background: white;
+        border-radius: 12px;
+        padding: 40px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        text-align: center;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 10px;
+        font-size: 32px;
+      }
+
+      .description {
+        color: #666;
+        margin-bottom: 30px;
+        line-height: 1.6;
+        font-size: 16px;
+      }
+
+      button {
+        background: #667eea;
+        color: white;
+        border: none;
+        padding: 16px 32px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+      }
+
+      button:hover {
+        background: #5568d3;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+
+      .stats {
+        margin-top: 30px;
+        padding: 20px;
+        background: #f5f5f5;
+        border-radius: 8px;
+        color: #666;
+        font-size: 14px;
+        text-align: left;
+      }
+
+      .stats strong {
+        color: #333;
+      }
+
+      .preview-section {
+        margin-top: 24px;
+        text-align: left;
+      }
+
+      .preview-section h2 {
+        margin: 0 0 12px;
+        font-size: 18px;
+        color: #333;
+      }
+
+      table.preview {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+      }
+
+      table.preview th,
+      table.preview td {
+        border: 1px solid #e0e0e0;
+        padding: 8px 10px;
+        text-align: left;
+      }
+
+      table.preview th {
+        background: #f5f5f5;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>CSVダウンロードサンプル</h1>
+      <p class="description">
+        ボタンをクリックすると、サンプルの社員データ（10件）をCSV形式でダウンロードできます。
+      </p>
+      <button id="download-csv">CSVダウンロード</button>
+      <div class="stats">
+        <strong>ファイル名:</strong> employee_data.csv<br>
+        <strong>データ件数:</strong> 10件<br>
+        <strong>カラム:</strong> ID, 氏名, 部署, 役職, 入社年, 給与<br>
+        <strong>エンコーディング:</strong> UTF-8 (BOM付き)
+      </div>
+      <div class="preview-section">
+        <h2>ダウンロードされるデータ（プレビュー）</h2>
+        <table class="preview">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>氏名</th>
+              <th>部署</th>
+              <th>役職</th>
+              <th>入社年</th>
+              <th>給与</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>田中 太郎</td>
+              <td>営業部</td>
+              <td>部長</td>
+              <td>2015</td>
+              <td>8,000,000</td>
+            </tr>
+            <tr>
+              <td>2</td>
+              <td>佐藤 花子</td>
+              <td>開発部</td>
+              <td>マネージャー</td>
+              <td>2017</td>
+              <td>7,500,000</td>
+            </tr>
+            <tr>
+              <td>3</td>
+              <td>鈴木 一郎</td>
+              <td>営業部</td>
+              <td>課長</td>
+              <td>2018</td>
+              <td>6,500,000</td>
+            </tr>
+            <tr>
+              <td>4</td>
+              <td>高橋 美咲</td>
+              <td>人事部</td>
+              <td>主任</td>
+              <td>2019</td>
+              <td>5,500,000</td>
+            </tr>
+            <tr>
+              <td>5</td>
+              <td>伊藤 健太</td>
+              <td>開発部</td>
+              <td>シニアエンジニア</td>
+              <td>2016</td>
+              <td>7,000,000</td>
+            </tr>
+            <tr>
+              <td>6</td>
+              <td>渡辺 由美</td>
+              <td>経理部</td>
+              <td>課長</td>
+              <td>2014</td>
+              <td>6,800,000</td>
+            </tr>
+            <tr>
+              <td>7</td>
+              <td>山本 大輔</td>
+              <td>開発部</td>
+              <td>エンジニア</td>
+              <td>2020</td>
+              <td>5,000,000</td>
+            </tr>
+            <tr>
+              <td>8</td>
+              <td>中村 さくら</td>
+              <td>営業部</td>
+              <td>主任</td>
+              <td>2019</td>
+              <td>5,500,000</td>
+            </tr>
+            <tr>
+              <td>9</td>
+              <td>小林 修</td>
+              <td>総務部</td>
+              <td>部長</td>
+              <td>2013</td>
+              <td>8,200,000</td>
+            </tr>
+            <tr>
+              <td>10</td>
+              <td>加藤 麻衣</td>
+              <td>人事部</td>
+              <td>課長</td>
+              <td>2017</td>
+              <td>6,600,000</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin-top:10px; color:#666; font-size:13px;">上の内容がそのままCSVとしてダウンロードされます。</p>
+      </div>
+    </div>
+    <script>
+      // 固定のCSVデータ
+      const csvData = `ID,氏名,部署,役職,入社年,給与
+    1,“田中 太郎”,“営業部”,“部長”,2015,8000000
+    2,“佐藤 花子”,“開発部”,“マネージャー”,2017,7500000
+    3,“鈴木 一郎”,“営業部”,“課長”,2018,6500000
+    4,“高橋 美咲”,“人事部”,“主任”,2019,5500000
+    5,“伊藤 健太”,“開発部”,“シニアエンジニア”,2016,7000000
+    6,“渡辺 由美”,“経理部”,“課長”,2014,6800000
+    7,“山本 大輔”,“開発部”,“エンジニア”,2020,5000000
+    8,“中村 さくら”,“営業部”,“主任”,2019,5500000
+    9,“小林 修”,“総務部”,“部長”,2013,8200000
+    10,“加藤 麻衣”,“人事部”,“課長”,2017,6600000`;
+      // CSVダウンロード関数
+      function downloadCSV() {
+        // BOM付きでCSVを作成（日本語Excel対応）
+        const bom = '\uFEFF';
+        const blob = new Blob([bom + csvData], {
+          type: 'text/csv;charset=utf-8;'
+        });
+        const link = document.createElement('a');
+        const url = URL.createObjectURL(blob);
+        link.setAttribute('href', url);
+        link.setAttribute('download', 'employee_data.csv');
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+      // ボタンクリックイベント
+      document.getElementById('download-csv').addEventListener('click', downloadCSV);
+    </script>
+  </body>
+</html>
